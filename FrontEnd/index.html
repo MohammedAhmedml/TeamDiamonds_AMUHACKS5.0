@@ -6,7 +6,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- only external lib -->
+  <!-- chart -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <script src="script.js" defer></script>
 </head>
@@ -15,16 +15,14 @@
 
 
 <!-- ================= LOGIN ================= -->
-<section id="login" class="page active loginPage">
+<section id="login" class="page active centerPage">
 
   <div class="loginCard">
     <h1 class="logo">SkillMap AI</h1>
     <p class="tag">Discover your skill gaps. Level up faster.</p>
 
-    <!-- NOT A FORM -->
     <input id="username" placeholder="Enter your name">
 
-    <!-- type button prevents refresh -->
     <button id="startBtn" type="button">Start Assessment →</button>
   </div>
 
@@ -34,32 +32,39 @@
 
 <!-- ================= ROLES ================= -->
 <section id="roles" class="page">
+
   <h2 class="title">Choose Your Role</h2>
   <div id="rolesGrid" class="roles"></div>
+
 </section>
 
 
 
 <!-- ================= ASSESSMENT ================= -->
 <section id="assessment" class="page">
-  <div class="card">
+
+  <div class="card wide">
     <h2 id="roleTitle"></h2>
     <div id="questions"></div>
     <button id="submitBtn" type="button">Submit Test</button>
   </div>
+
 </section>
 
 
 
-<!-- ================= REPORT ================= -->
+<!-- ================= REPORT DASHBOARD ================= -->
 <section id="report" class="page">
 
   <h2 id="welcome" class="title"></h2>
 
+
+  <!-- STATS -->
   <div class="statsRow">
+
     <div class="statCard">
       <p>Score</p>
-      <h1 id="userScore">0</h1>
+      <h1 id="userScore">0%</h1>
     </div>
 
     <div class="statCard">
@@ -71,27 +76,35 @@
       <p>Rank</p>
       <h1>#3</h1>
     </div>
+
   </div>
 
 
-  <div class="reportGrid">
+  <!-- DASHBOARD GRID -->
+  <div class="dashboardGrid">
 
-    <div class="card chartCard">
+    <div class="card bigCard">
+      <h3>Skill Analysis</h3>
       <canvas id="chart"></canvas>
     </div>
 
     <div class="card">
       <h3>Daily Plan</h3>
       <ul id="routine"></ul>
+    </div>
 
+    <div class="card">
       <h3>Courses</h3>
       <div id="courses"></div>
+    </div>
 
+    <div class="card">
       <h3>Badges</h3>
       <div id="badges" class="badges"></div>
     </div>
 
   </div>
+
 
   <div class="navBtns">
     <button onclick="go('leaderboard')">Leaderboard</button>
@@ -104,24 +117,27 @@
 
 <!-- ================= LEADERBOARD ================= -->
 <section id="leaderboard" class="page">
+
   <h2 class="title">Leaderboard 🏆</h2>
 
-  <div class="card">
+  <div class="card wide">
     <table>
       <tr><th>Name</th><th>Score</th></tr>
-      <tr><td>Alex</td><td>92</td></tr>
-      <tr><td>Sam</td><td>87</td></tr>
+      <tr><td>Alex</td><td>92%</td></tr>
+      <tr><td>Sam</td><td>87%</td></tr>
       <tr><td id="userRow"></td><td id="userScore"></td></tr>
     </table>
   </div>
 
   <button onclick="go('report')">Back</button>
+
 </section>
 
 
 
 <!-- ================= STREAK ================= -->
 <section id="streak" class="page">
+
   <h2 class="title">Consistency Tracker 🔥</h2>
 
   <div class="card center">
@@ -130,6 +146,7 @@
   </div>
 
   <button onclick="go('report')">Back</button>
+
 </section>
 
 </body>
