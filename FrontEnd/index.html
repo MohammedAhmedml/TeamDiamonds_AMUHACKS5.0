@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SkillMap AI</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<section class="page active" id="login">
+  <div class="card center">
+    <h1>SkillMap AI</h1>
+    <p>Personalized Career Skill Intelligence</p>
+    <input id="username" placeholder="Enter your name">
+    <button onclick="login()">Start Assessment</button>
+  </div>
+</section>
+
+
+<!-- ROLE SELECTION -->
+<section class="page" id="roles">
+  <h2>Select Your Role</h2>
+  <div class="roles" id="rolesGrid"></div>
+</section>
+
+
+<!-- QUIZ -->
+<section class="page" id="assessment">
+  <div class="card">
+    <h2 id="roleTitle"></h2>
+    <div id="questions"></div>
+    <button onclick="analyze()">Submit Test</button>
+  </div>
+</section>
+
+
+<!-- DASHBOARD -->
+<section class="page" id="dashboard">
+
+  <h2 id="welcome"></h2>
+
+  <div class="stats">
+    <div class="stat">Score<br><span id="scoreBox"></span></div>
+    <div class="stat">Streak 🔥<br><span id="streakBox"></span></div>
+    <div class="stat">Rank 🏆<br><span>#3</span></div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <canvas id="chart"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Daily Plan</h3>
+      <ul id="routine"></ul>
+    </div>
+
+    <div class="card">
+      <h3>Free Courses</h3>
+      <div id="courses"></div>
+    </div>
+
+    <div class="card">
+      <h3>Leaderboard</h3>
+      <table>
+        <tr><th>Name</th><th>Score</th></tr>
+        <tr><td id="userRow"></td><td id="userScore"></td></tr>
+        <tr><td>Alex</td><td>88</td></tr>
+        <tr><td>Sam</td><td>80</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
