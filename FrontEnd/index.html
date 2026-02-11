@@ -2,81 +2,135 @@
 <html>
 <head>
   <title>SkillMap AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- only external lib -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<section class="page active" id="login">
-  <div class="card center">
-    <h1>SkillMap AI</h1>
-    <p>Personalized Career Skill Intelligence</p>
+
+<!-- ================= LOGIN ================= -->
+<section id="login" class="page active loginPage">
+
+  <div class="loginCard">
+    <h1 class="logo">SkillMap AI</h1>
+    <p class="tag">Discover your skill gaps. Level up faster.</p>
+
+    <!-- NOT A FORM -->
     <input id="username" placeholder="Enter your name">
-    <button onclick="login()">Start Assessment</button>
+
+    <!-- type button prevents refresh -->
+    <button id="startBtn" type="button">Start Assessment →</button>
   </div>
+
 </section>
 
 
-<!-- ROLE SELECTION -->
-<section class="page" id="roles">
-  <h2>Select Your Role</h2>
-  <div class="roles" id="rolesGrid"></div>
+
+<!-- ================= ROLES ================= -->
+<section id="roles" class="page">
+  <h2 class="title">Choose Your Role</h2>
+  <div id="rolesGrid" class="roles"></div>
 </section>
 
 
-<!-- QUIZ -->
-<section class="page" id="assessment">
+
+<!-- ================= ASSESSMENT ================= -->
+<section id="assessment" class="page">
   <div class="card">
     <h2 id="roleTitle"></h2>
     <div id="questions"></div>
-    <button onclick="analyze()">Submit Test</button>
+    <button id="submitBtn" type="button">Submit Test</button>
   </div>
 </section>
 
 
-<!-- DASHBOARD -->
-<section class="page" id="dashboard">
 
-  <h2 id="welcome"></h2>
+<!-- ================= REPORT ================= -->
+<section id="report" class="page">
 
-  <div class="stats">
-    <div class="stat">Score<br><span id="scoreBox"></span></div>
-    <div class="stat">Streak 🔥<br><span id="streakBox"></span></div>
-    <div class="stat">Rank 🏆<br><span>#3</span></div>
+  <h2 id="welcome" class="title"></h2>
+
+  <div class="statsRow">
+    <div class="statCard">
+      <p>Score</p>
+      <h1 id="userScore">0</h1>
+    </div>
+
+    <div class="statCard">
+      <p>Streak 🔥</p>
+      <h1 id="streakBox">0</h1>
+    </div>
+
+    <div class="statCard">
+      <p>Rank</p>
+      <h1>#3</h1>
+    </div>
   </div>
 
-  <div class="grid">
 
-    <div class="card">
+  <div class="reportGrid">
+
+    <div class="card chartCard">
       <canvas id="chart"></canvas>
     </div>
 
     <div class="card">
       <h3>Daily Plan</h3>
       <ul id="routine"></ul>
-    </div>
 
-    <div class="card">
-      <h3>Free Courses</h3>
+      <h3>Courses</h3>
       <div id="courses"></div>
-    </div>
 
-    <div class="card">
-      <h3>Leaderboard</h3>
-      <table>
-        <tr><th>Name</th><th>Score</th></tr>
-        <tr><td id="userRow"></td><td id="userScore"></td></tr>
-        <tr><td>Alex</td><td>88</td></tr>
-        <tr><td>Sam</td><td>80</td></tr>
-      </table>
+      <h3>Badges</h3>
+      <div id="badges" class="badges"></div>
     </div>
 
   </div>
 
+  <div class="navBtns">
+    <button onclick="go('leaderboard')">Leaderboard</button>
+    <button onclick="go('streak')">Streak</button>
+  </div>
+
 </section>
 
-<script src="script.js"></script>
+
+
+<!-- ================= LEADERBOARD ================= -->
+<section id="leaderboard" class="page">
+  <h2 class="title">Leaderboard 🏆</h2>
+
+  <div class="card">
+    <table>
+      <tr><th>Name</th><th>Score</th></tr>
+      <tr><td>Alex</td><td>92</td></tr>
+      <tr><td>Sam</td><td>87</td></tr>
+      <tr><td id="userRow"></td><td id="userScore"></td></tr>
+    </table>
+  </div>
+
+  <button onclick="go('report')">Back</button>
+</section>
+
+
+
+<!-- ================= STREAK ================= -->
+<section id="streak" class="page">
+  <h2 class="title">Consistency Tracker 🔥</h2>
+
+  <div class="card center">
+    <h1 id="streakBig" class="bigNumber"></h1>
+    <div id="heatmap" class="heatmap"></div>
+  </div>
+
+  <button onclick="go('report')">Back</button>
+</section>
+
 </body>
 </html>
